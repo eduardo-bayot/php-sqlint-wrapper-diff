@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+/**
+ * php-sqlint-wrapper-diff wraps sqlint and check sql based on a git diff.
+ *
+ * @author    Eduardo Bayot <ebayot@gmail.com>
+ */
+
+if (is_file(__DIR__ . '/../../../autoload.php')) {
+    include_once __DIR__ . '/../../../autoload.php';
+} elseif (is_file(__DIR__ . '/../autoload.php')) {
+    include_once __DIR__ . '/../autoload.php';
+} else {
+    include_once 'vendor/autoload.php';
+}
+
+$climate = new League\CLImate\CLImate();
+
+$sqlint = new PhpSqlintWrapperDiff\PhpSqlintWrapperDiff($argv, $climate);
+$sqlint->run();
+
+exit($sqlint->getExitCode());
