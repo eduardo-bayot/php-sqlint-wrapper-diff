@@ -140,8 +140,7 @@ class PhpSqlintWrapperDiff
         if ($this->isVerbose) {
             $fileDiffCount = count($fileDiff);
             $this->comment(
-                'Checking ' . $fileDiffCount . ' ' .
-                ngettext('file', 'files', $fileDiffCount) . ' for violations.'
+                'Checking ' . $fileDiffCount . ' files' . ' for violations.'
             );
         }
 
@@ -186,7 +185,7 @@ class PhpSqlintWrapperDiff
     {
         // Get a list of changed files (not including deleted files)
         $output = shell_exec(
-            'git diff ' . $this->baseBranch . ' ' . $this->currentBranch . ' --name-only --diff-filter=d'
+            'git diff ' . $this->currentBranch . ' --name-only --diff-filter=d'
         );
 
         // Convert files into an array
